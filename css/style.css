@@ -1,0 +1,254 @@
+:root {
+    --color-primary:#058185;
+    --color-darkprimary: #01a597;
+    --color-secondary:#01C6B6;
+    --color-heading: #f92707;
+    --color-accent:#FC8672;
+    --color-light: #E8E8E8;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+/* Typography */
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    background-image: linear-gradient(to right, #FFA08C , #FF705C);
+    width: 100%;
+    overflow-x: hidden;
+}
+
+h1,h2,h3 {
+    color: var(--color-headings);
+    margin-bottom: 3rem;
+    margin-top: 3rem;
+}
+
+h1 {
+    font-size: 7rem;
+}
+
+h2 {
+    font-size: 5rem;
+}
+
+h3 {
+    font-size: 3rem;
+}
+
+p {
+    margin-top: 0;
+}
+
+/* Links */
+
+a {
+    text-decoration: none;
+}
+
+header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 100;
+}
+
+.nav__list {
+    position: relative;
+    list-style: none;
+    display: flex;
+}
+
+.logo {
+    color: var(--color-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.3rem;
+    font-weight: 700;
+    font-size: 3rem;
+}
+
+.logo:focus {
+    outline: 0;
+}
+
+.list__item {
+    border: 1px solid var(--color-darkprimary);
+    border-radius: 15px;
+    font-size: 1.7rem;
+    padding: 1rem 2rem;
+    margin-left: 0.9rem;
+}
+
+.list__item a {
+    color: var(--color-darkprimary);
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+}
+
+.list__item:hover {
+    background-color: var(--color-darkprimary);
+
+}
+
+.list__item a:hover{
+    color: var(--color-light);
+}
+
+/* Section */
+
+section {
+    width: 100%;
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 10rem;
+    background: linear-gradient(to top , #01C6B6, transparent);
+    z-index: 15;
+
+}
+
+section img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    pointer-events: none;
+}
+
+.sun {
+    width: 40rem;
+    height: 40rem;
+    margin-left: 100rem;
+    mix-blend-mode: screen ;
+}
+
+.air_baloon {
+    width: 30rem;
+    height: 30rem;
+    margin-left: 20rem;
+    margin-top: 10rem;
+}
+
+section .heading {
+    position: absolute;
+    color:var(--color-light);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    font-size: 9rem;
+    text-align: center;
+    line-height: 6rem;
+    transform: translateY(-50%);
+
+}
+
+section .heading span {
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+}
+
+.btn {
+    position: absolute;
+    display: inline-block;
+    border-radius: 20px;
+    background-color: var(--color-light);
+    color: var(--color-primary);
+    font-size: 1.5rem;
+    padding: 1rem 3rem;
+    letter-spacing: 0.2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    transform: translateY(8rem);
+}
+
+.content_container{
+    background-color: var(--color-secondary);
+}
+
+.content {
+    background-color: var(--color-secondary);
+    position: relative;
+    width: 80%;
+    color: var(--color-light);
+    margin: auto;
+    text-align: center;
+}
+
+.content p {
+    font-size: 2rem;
+    text-align: justify;
+    margin-bottom: 2rem;
+}
+
+
+/* Footer */
+
+footer {
+    background-color: var(--color-primary); 
+    padding: 20px;
+    text-align: center; 
+    font-family: "Montserrat", sans-serif; 
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 25rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.company__name {
+    text-transform: uppercase;
+    font-weight: 700;
+    letter-spacing: 0.2rem;
+}
+
+
+.footer__text {
+    color: var(--color-light); 
+    font-size: 1.8rem;
+}
+
+.footer__icons {
+    margin-top: 3rem; 
+       
+}
+
+.footer__icons a {
+    text-decoration: none; 
+    color: var(--color-light); 
+    margin: 1.7rem; 
+    border: 1px solid var(--color-light );
+    padding: 1.3rem 1.3rem;
+    border-radius: 10px;    
+    font-size: 1.5rem;
+}
+
+.footer__icons a:hover {
+    border: 1px solid var(--color-accent);
+    color: var(--color-light); 
+    background-color: var(--color-accent);
+}
