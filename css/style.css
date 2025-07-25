@@ -154,6 +154,8 @@ section img {
     height: 70%;
     overflow: hidden;
     z-index: 2;
+    background: linear-gradient(to bottom, #87CEEB, #4682B4);
+    transition: background 0.1s ease;
 }
 
 .sky-area img {

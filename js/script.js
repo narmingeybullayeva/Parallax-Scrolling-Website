@@ -25,9 +25,40 @@ window.addEventListener("scroll", function () {
   const footerStartsAt = footer.offsetTop - window.innerHeight
   const heroHeight = document.querySelector('.hero').offsetHeight
   const skyAreaHeight = heroHeight * 0.7
+  const skyArea = document.querySelector('.sky-area')
   
   // Only apply parallax effects when we're in the main content area
   const shouldApplyParallax = value < footerStartsAt && footerRect.top > 0
+  
+  // Sky color transition from day to night
+  const maxSkyScroll = skyAreaHeight
+  const scrollProgress = Math.min(value / maxSkyScroll, 1)
+  
+  // Day colors (light blue sky)
+  const dayTopColor = { r: 135, g: 206, b: 235 } // #87CEEB
+  const dayBottomColor = { r: 70, g: 130, b: 180 } // #4682B4
+  
+  // Night colors (dark blue/purple)
+  const nightTopColor = { r: 25, g: 25, b: 112 } // #191970
+  const nightBottomColor = { r: 0, g: 0, b: 139 } // #00008B
+  
+  // Interpolate between day and night colors
+  const currentTopColor = {
+    r: Math.round(dayTopColor.r + (nightTopColor.r - dayTopColor.r) * scrollProgress),
+    g: Math.round(dayTopColor.g + (nightTopColor.g - dayTopColor.g) * scrollProgress),
+    b: Math.round(dayTopColor.b + (nightTopColor.b - dayTopColor.b) * scrollProgress)
+  }
+  
+  const currentBottomColor = {
+    r: Math.round(dayBottomColor.r + (nightBottomColor.r - dayBottomColor.r) * scrollProgress),
+    g: Math.round(dayBottomColor.g + (nightBottomColor.g - dayBottomColor.g) * scrollProgress),
+    b: Math.round(dayBottomColor.b + (nightBottomColor.b - dayBottomColor.b) * scrollProgress)
+  }
+  
+  // Apply the interpolated gradient to the sky area
+  skyArea.style.background = `linear-gradient(to bottom, 
+    rgb(${currentTopColor.r}, ${currentTopColor.g}, ${currentTopColor.b}), 
+    rgb(${currentBottomColor.r}, ${currentBottomColor.g}, ${currentBottomColor.b}))`
   
   if (shouldApplyParallax) {
     // Apply parallax effects with proper bounds
