@@ -24,6 +24,7 @@ body {
     background-image: linear-gradient(to right, #FFA08C , #FF705C);
     width: 100%;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
 h1,h2,h3 {
