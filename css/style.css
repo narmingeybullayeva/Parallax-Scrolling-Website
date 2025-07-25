@@ -160,6 +160,7 @@ section img {
     top: 0;
     left: 0;
     left: 0;
+    z-index: 1;
 }
 
 .air_baloon {
@@ -231,7 +232,8 @@ footer {
     display: flex;
     justify-content: center;
     flex-direction: column;
-    z-index: 200;
+    position: relative;
+    z-index: 10;
     margin: 0;
 }
 
