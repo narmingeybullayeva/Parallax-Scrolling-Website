@@ -20,3 +20,5 @@ window.addEventListener("scroll", function () {
   button.style.marginTop = value * 1.5 + "px"
   mountain.style.top = value * 0.2 + "px"
   header.style.top = value * 0.25 + "px"
+}
+)
