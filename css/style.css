@@ -24,12 +24,12 @@ body {
     background-image: linear-gradient(to right, #004258, #004F76);
     width: 100%;
     overflow-x: hidden;
-    height: 100%;
+    min-height: 100vh;
     transition: background-image 0.3s ease;
 }
 
-html {
-    height: 100%;
+html, body {
+    height: auto;
 }
 
 h1,h2,h3 {
