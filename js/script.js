@@ -12,36 +12,18 @@ const html = document.documentElement
 window.addEventListener("scroll", function () {
   let value = window.scrollY
   
-  // Get footer position
+  // Calculate footer position and stop scroll there
   const footerTop = footer.offsetTop
-  const footerHeight = footer.offsetHeight
-  const documentHeight = document.documentElement.scrollHeight
   const windowHeight = window.innerHeight
-  const maxScroll = documentHeight - windowHeight
+  const maxScrollValue = footerTop - windowHeight
   
-  // Prevent scrolling beyond the footer
-  if (value >= maxScroll) {
-    window.scrollTo(0, maxScroll)
-    value = maxScroll
+  // Limit scroll to footer position
+  if (value > maxScrollValue) {
+    value = maxScrollValue
+    window.scrollTo(0, maxScrollValue)
   }
   
-  // Stop parallax effects when footer comes into view
-  if (value >= footerTop - windowHeight) {
-    // Lock elements at their final positions when footer is reached
-    const finalValue = footerTop - windowHeight
-    
-    heading.style.top = finalValue * -0.5 + "%"
-    airBaloon.style.top = finalValue * -1.5 + "px"
-    airBaloon.style.left = finalValue * -1.5 + "px"
-    sun.style.top = finalValue * 1.5 + "px"
-    button.style.marginTop = finalValue * 1.5 + "px"
-    mountain.style.top = finalValue * 0.2 + "px"
-    header.style.top = finalValue * 0.25 + "px"
-    
-    return // Exit early to prevent further calculations
-  }
-  
-  // Apply normal parallax effects only when not at footer
+  // Apply parallax effects
   heading.style.top = value * -0.5 + "%"
   airBaloon.style.top = value * -1.5 + "px"
   airBaloon.style.left = value * -1.5 + "px"
