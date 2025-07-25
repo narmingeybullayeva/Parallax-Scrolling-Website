@@ -23,6 +23,8 @@ window.addEventListener("scroll", function () {
   // Calculate the maximum useful scroll position (when footer starts to appear)
   const footerRect = footer.getBoundingClientRect()
   const footerStartsAt = footer.offsetTop - window.innerHeight
+  const heroHeight = document.querySelector('.hero').offsetHeight
+  const skyAreaHeight = heroHeight * 0.7
   
   // Only apply parallax effects when we're in the main content area
   const shouldApplyParallax = value < footerStartsAt && footerRect.top > 0
@@ -32,7 +34,12 @@ window.addEventListener("scroll", function () {
     heading.style.top = (initialPositions.heading.top + value * -0.5) + "%"
     airBaloon.style.top = (initialPositions.airBaloon.top + value * -1.5) + "px"
     airBaloon.style.left = (initialPositions.airBaloon.left + value * -1.5) + "px"
-    sun.style.top = (initialPositions.sun.top + value * 1.5) + "px"
+    
+    // Sun movement within sky area only
+    if (value < skyAreaHeight) {
+      sun.style.top = (initialPositions.sun.top + value * 1.5) + "px"
+    }
+    
     button.style.marginTop = (initialPositions.button.marginTop + value * 1.5) + "px"
     mountain.style.top = (initialPositions.mountain.top + value * 0.2) + "px"
     header.style.top = (initialPositions.header.top + value * 0.25) + "px"
@@ -41,7 +48,6 @@ window.addEventListener("scroll", function () {
     heading.style.top = (initialPositions.heading.top + footerStartsAt * -0.5) + "%"
     airBaloon.style.top = (initialPositions.airBaloon.top + footerStartsAt * -1.5) + "px"
     airBaloon.style.left = (initialPositions.airBaloon.left + footerStartsAt * -1.5) + "px"
-    sun.style.top = (initialPositions.sun.top + footerStartsAt * 1.5) + "px"
     button.style.marginTop = (initialPositions.button.marginTop + footerStartsAt * 1.5) + "px"
     mountain.style.top = (initialPositions.mountain.top + footerStartsAt * 0.2) + "px"
     header.style.top = (initialPositions.header.top + footerStartsAt * 0.25) + "px"
@@ -49,7 +55,6 @@ window.addEventListener("scroll", function () {
 
   // Handle background color transition with better logic
   const contentContainer = document.querySelector('.content_container')
-  const heroHeight = document.querySelector('.hero').offsetHeight
   const sunsetStart = heroHeight * 0.3
   const sunsetEnd = contentContainer.offsetTop + contentContainer.offsetHeight * 0.5
   
