@@ -12,17 +12,23 @@ const html = document.documentElement
 window.addEventListener("scroll", function () {
   let value = window.scrollY
   
-  // Calculate the maximum scroll position (total content height minus viewport height)
-  const maxScroll = Math.max(body.scrollHeight, body.offsetHeight, html.clientHeight, html.scrollHeight, html.offsetHeight) - window.innerHeight
-  
   // Get footer position
   const footerTop = footer.offsetTop
   const footerHeight = footer.offsetHeight
+  const documentHeight = document.documentElement.scrollHeight
+  const windowHeight = window.innerHeight
+  const maxScroll = documentHeight - windowHeight
+  
+  // Prevent scrolling beyond the footer
+  if (value >= maxScroll) {
+    window.scrollTo(0, maxScroll)
+    value = maxScroll
+  }
   
   // Stop parallax effects when footer comes into view
-  if (value >= footerTop - window.innerHeight) {
+  if (value >= footerTop - windowHeight) {
     // Lock elements at their final positions when footer is reached
-    const finalValue = footerTop - window.innerHeight
+    const finalValue = footerTop - windowHeight
     
     heading.style.top = finalValue * -0.5 + "%"
     airBaloon.style.top = finalValue * -1.5 + "px"
