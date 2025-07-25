@@ -12,15 +12,17 @@ const html = document.documentElement
 window.addEventListener("scroll", function () {
   let value = window.scrollY
   
-  // Calculate footer position and stop scroll there
+  // Calculate footer position and document boundaries
   const footerTop = footer.offsetTop
   const windowHeight = window.innerHeight
-  const maxScrollValue = footerTop - windowHeight
+  const documentHeight = document.documentElement.scrollHeight
+  const bodyHeight = document.body.scrollHeight
+  const maxScroll = Math.min(footerTop - windowHeight + footer.offsetHeight, documentHeight - windowHeight)
   
-  // Limit scroll to footer position
+  // Prevent scrolling beyond the calculated maximum
   if (value > maxScrollValue) {
-    value = maxScrollValue
     window.scrollTo(0, maxScrollValue)
+    return
   }
   
   // Apply parallax effects
@@ -31,4 +33,3 @@ window.addEventListener("scroll", function () {
   button.style.marginTop = value * 1.5 + "px"
   mountain.style.top = value * 0.2 + "px"
   header.style.top = value * 0.25 + "px"
-})

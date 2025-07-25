@@ -224,7 +224,7 @@ section .heading span {
 
 footer {
     background-color: var(--color-primary); 
-    padding: 20px;
+    padding: 20px 20px 20px 20px;
     text-align: center; 
     font-family: "Montserrat", sans-serif; 
     width: 100%;
@@ -234,7 +234,7 @@ footer {
     position: relative;
     z-index: 10;
     margin: 0;
-    padding-bottom: 0;
+    padding-bottom: 20px;
 }
 
 .company__name {
