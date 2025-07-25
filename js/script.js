@@ -15,7 +15,6 @@ window.addEventListener("scroll", function () {
   
   // Calculate footer position relative to viewport
   const footerRect = footer.getBoundingClientRect()
-  const footerTop = footerRect.top + window.scrollY
   
   // Stop parallax effects when footer comes into view or when reaching max scroll
   const shouldStopParallax = footerRect.top <= window.innerHeight || value >= maxScroll
@@ -33,20 +32,19 @@ window.addEventListener("scroll", function () {
 
   // Handle background color transition
   // Use a threshold based on content height rather than sun position
-  const colorChangeThreshold = document.querySelector('.content_container').offsetTop * 0.3
+  const contentContainer = document.querySelector('.content_container')
+  const colorChangeThreshold = contentContainer.offsetTop * 0.5
   
-  if (value >= colorChangeThreshold && !shouldStopParallax) {
+  // Only change to sunset when we're in the middle section, not at the very bottom
+  const isInMiddleSection = value >= colorChangeThreshold && value < (contentContainer.offsetTop + contentContainer.offsetHeight * 0.8)
+  
+  if (isInMiddleSection) {
     document.body.style.backgroundImage =
       "linear-gradient(to right, #FFA08C , #FF705C)"
-  } else if (!shouldStopParallax) {
+  } else {
+    // Keep night sky for beginning and end
     document.body.style.backgroundImage =
       "linear-gradient(to right, #004258, #004F76)"
-  }
-  
-  // Ensure we maintain the final state when at bottom
-  if (shouldStopParallax) {
-    document.body.style.backgroundImage =
-      "linear-gradient(to right, #FFA08C , #FF705C)"
   }
 })
 

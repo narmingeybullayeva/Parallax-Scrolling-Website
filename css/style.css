@@ -21,10 +21,11 @@ html {
 
 body {
     font-family: "Montserrat", sans-serif;
-    background-image: linear-gradient(to right, #FFA08C , #FF705C);
+    background-image: linear-gradient(to right, #004258, #004F76);
     width: 100%;
     overflow-x: hidden;
     min-height: 100vh;
+    transition: background-image 0.3s ease;
 }
 
 h1,h2,h3 {
